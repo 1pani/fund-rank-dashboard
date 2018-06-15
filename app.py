@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np
 import plotly
 
-app = dash.Dash()
+app = dash.Dash(sharing=True , csrf_protect = False)
 server = app.server
 
 
@@ -290,4 +290,4 @@ app.css.append_css({
 })
 
 if __name__ == '__main__':
-    app.run_server(debug=True , port=8000)
+    app.run_server(debug=True ,host ='0.0.0.0' , port=8000)
