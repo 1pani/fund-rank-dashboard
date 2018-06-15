@@ -26,8 +26,11 @@ elss = pd.read_excel(xls , 'sheet1')
 #inputting the categories
 
 #cat = input("enter the categories name  ")
-status_distri = input("enter the distribution status ")
-purchase = input("enter the mode of purchase ")
+#status_distri = input("enter the distribution status ")
+#purchase = input("enter the mode of purchase ")
+
+status_distri = 'Accumulated'
+purchse = '1'
 
 #elss = elss[(elss['CategoryName']==cat)&(elss['DistributionStatus']==status_distri) &(elss['PurchaseMode']==purchase)]
 elss = elss[(elss['DistributionStatus']==status_distri) &(elss['PurchaseMode']==purchase)]
@@ -70,8 +73,8 @@ df['EquitySectorUtilitiesLongRescaled'] = pd.to_numeric(df['EquitySectorUtilitie
 
 
 #print("enter the sectoral filter value")
-filter_value = input("enter the sectoral filter value")
-
+#filter_value = input("enter the sectoral filter value")
+filter_value = '40'
 
 df = df.drop(df[df.EquitySectorBasicMaterialsLongRescaled > int(filter_value)].index)
 df = df.drop(df[df.EquitySectorCommunicationServicesLongRescaled > int(filter_value)].index)
