@@ -1,0 +1,19 @@
+1.Install latest python 3 version for windows - https://www.python.org/downloads/
+2.After installing python, visit "https://bootstrap.pypa.io/get-pip.py" and download "get-pip.py"
+3.Open python command line, type "python get-pip.py".
+4. Find pip.exe on your computer, then add its folder (for example, C:\Python27\Scripts) to your path (Start / Edit environment variables). Now you should be able 		to run pip from the command line.
+5."pip install <package-name>" or "python -m pip install <package-name>"
+6.Clone the following repository and download it from - https://github.com/1pani/fund-rank-dashboard
+7.Install the following - pip install dash==0.21.1  # The core dash backend
+						pip install dash-renderer==0.13.0  # The dash front-end
+						pip install dash-html-components==0.11.0  # HTML components
+						pip install dash-core-components==0.23.0  # Supercharged components
+						pip install plotly --upgrade  # Plotly graphing library used in examples
+						pip install dash_table_experiments
+						pip install pandas
+						pip install numpy
+						pip install json
+8.Run the "app.py" downloaded from the repository in step 6.
+9.Input the values, and follow the local ip generated at the end of the execution process.
+10.You get your mutual-fund-ranking dashboard.
+11.Also visit https://github.com/pettarin/python-on-windows for further help in installing python.
