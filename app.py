@@ -1,3 +1,6 @@
+
+
+
 import dash
 from dash.dependencies import Input, Output, State
 import dash_core_components as dcc
@@ -18,7 +21,10 @@ server = app.server
 
 #this is where you upload the files and also apply the sheet name
 
-
+pd.options.mode.chained_assignment = None
+#path = input("Enter the path of Research file - ")
+#path = path.replace('\\' , '\\\\')
+#C:\Users\hp\Anaconda3\data science course edx\Copy of 30052018_ELSS Research.xlsx
 xls = pd.ExcelFile('C:\\Users\\hp\\Anaconda3\\data science course edx\\Copy of 30052018_ELSS Research.xlsx')
 elss = pd.read_excel(xls , 'sheet1')
 
@@ -55,8 +61,8 @@ elss['AsOfOriginalReported'] = elss['AsOfOriginalReported']/10000000
 
 #print(elss[elss['AsOfOriginalReported'] > 1000])
 
-
-df = elss[elss['AsOfOriginalReported'] > 1300]
+aum_value = input("Enter the AUM filter-")
+df = elss[elss['AsOfOriginalReported'] > int(aum_value)]
 #print(df)
 
 df['EquitySectorBasicMaterialsLongRescaled'] = pd.to_numeric(df['EquitySectorBasicMaterialsLongRescaled'], errors='coerce')
@@ -174,7 +180,7 @@ for i in range(0,len(df['ISIN'])):
 
 df['final'] = pd.Series(average_rank , index = df.index)
 
-df['yoo']=df['final'].rank(ascending=1,method='dense')
+df['mutual_fund_rank']=df['final'].rank(ascending=1,method='dense')
 
 #print(df)
 
@@ -208,12 +214,14 @@ app.layout = html.Div([
         rows=df.to_dict('records'),  #DF_GAPMINDER
 
         # optional - sets the order of columns
-        columns=sorted(df.columns),   #DF_GAPMINDER
+        columns=(df.columns),   #DF_GAPMINDER
 
         row_selectable=True,
         filterable=True,
+        #min_width = 777,
         sortable=True,
         selected_row_indices=[],
+        #min_height = 1500 , 
         id='datatable-gapminder'
     ),
     html.Div(id='selected-indexes'),
@@ -260,7 +268,7 @@ def update_figure(rows, selected_row_indices):
         marker['color'][i] = '#FF851B'
     fig.append_trace({
         'x': dff['LegalName'],
-        'y': dff['yoo'],
+        'y': dff['mutual_fund_rank'],
         'type': 'bar',
         'marker': marker
     }, 1, 1)
