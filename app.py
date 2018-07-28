@@ -25,8 +25,11 @@ pd.options.mode.chained_assignment = None
 #path = input("Enter the path of Research file - ")
 #path = path.replace('\\' , '\\\\')
 #C:\Users\hp\Anaconda3\data science course edx\Copy of 30052018_ELSS Research.xlsx
-xls = pd.ExcelFile('C:\\Users\\hp\\Anaconda3\\data science course edx\\Copy of 30052018_ELSS Research.xlsx')
+xls=input("enter the primary dataset path - ")
+xls.replace('\\','\\\\')
 elss = pd.read_excel(xls , 'sheet1')
+#xls = pd.ExcelFile('C:\\Users\\hp\\Anaconda3\\data science course edx\\Copy of 30052018_ELSS Research.xlsx')
+#elss = pd.read_excel(xls , 'sheet1')
 
 
 #inputting the categories
